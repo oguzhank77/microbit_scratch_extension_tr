@@ -147,12 +147,12 @@
   ext._getStatus = function() {
     if (device) {
       if (device.is_open()) {
-        return {status: 2, msg: 'micro:bit connected'};
+        return {status: 2, msg: 'micro:bit bağlandı'};
       } else {
-        return {status: 1, msg: 'micro:bit connecting...'};
+        return {status: 1, msg: 'micro:bit bağlanıyor...'};
       }
     } else {
-      return {status: 1, msg: 'micro:bit disconnected'};
+      return {status: 1, msg: 'micro:bit bağlı değil!'};
     }
   };
 
@@ -191,19 +191,19 @@
   };
 
   var blocks = [
-    ['h', 'when %m.btns button pressed', 'whenButtonPressed', 'A'],
+    ['h', '%m.btns butonuna basıldığında', 'whenButtonPressed', 'A'],
     [' '],
-    ['h', 'when pin %d.touchPins connected', 'whenPinConnected', '0'],
+    ['h', 'pin %d.touchPins bağlandığında', 'whenPinConnected', '0'],
     [' '],
-    [' ', 'display %s', 'writeText', 'Hello!'],
+    [' ', 'ekrana %s yazdır', 'writeText', 'Hello!'],
     [' '],
-    [' ', 'set light x:%d.rowcol y:%d.rowcol %m.ledState', 'setMatrixLED', 1, 1, 'on'],
-    [' ', 'set all lights off' ,'clearAllMatrixLEDs'],
+    [' ', 'ışıkları x:%d.rowcol y:%d.rowcol %m.ledState', 'setMatrixLED', 1, 1, 'on'],
+    [' ', 'tüm ışıkları kapat' ,'clearAllMatrixLEDs'],
     [' '],
-    ['h', 'when shaken', 'whenShaken'],
-    ['h', 'when tilted %m.dirs', 'whenTilted', 'any'],
-    ['b', 'tilted %m.dirs?', 'isTilted', 'any'],
-    ['r', 'tilt angle %m.tiltDirs', 'tiltDirection', 'right']
+    ['h', 'sallandığında', 'whenShaken'],
+    ['h', '%m.dirs doğru eğildiğinde', 'whenTilted', 'any'],
+    ['b', '%m.dirs doğru eğildi mi?', 'isTilted', 'any'],
+    ['r', '%m.tiltDirs doğru eğim açısı', 'tiltDirection', 'right']
   ];
 
   var menus = {
@@ -218,8 +218,8 @@
   var descriptor = {
     blocks: blocks,
     menus: menus,
-    url: 'https://lancaster-university.github.io/microbit-docs'
+    url: 'https://www.makerkamp.com/microbit-docs.html'
   };
 
-  ScratchExtensions.register('micro:bit', descriptor, ext, {info: device_info, type: 'ble'});
+  ScratchExtensions.register('micro:bit TR', descriptor, ext, {info: device_info, type: 'ble'});
 })({});
